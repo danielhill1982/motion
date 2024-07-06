@@ -1,0 +1,75 @@
+<template>
+  <div>
+    <section><span>Scroll</span></section>
+    <section><span>to</span></section>
+    <section><span>trigger</span></section>
+    <section><span>animations!</span></section>
+  </div>
+</template>
+<script setup lang="ts">
+import { inView, animate } from "motion";
+onMounted(() => {
+  inView("section", ({ target }) => {
+  animate(
+    target.querySelector("span"),
+    { opacity: 1, transform: "none" },
+    { delay: 0.2, duration: 0.9, easing: [0.17, 0.55, 0.55, 1] }
+  );
+});
+});
+</script>
+<style>
+      body {
+      --white: #f5f5f5;
+      --black: #0f1115;
+      --yellow: #ffeb0e;
+      --strong-blue: #0d63f8;
+      --blue: #31a6fa;
+      --green: #57eb64;
+      --pink: #ff2965;
+      --red: #ff1231;
+      --splash: #00ffdb;
+      display: flex;
+      flex-direction: column;
+      margin: 0;
+      padding: 0;
+      min-height: 90vh;
+    }
+    
+    section {
+      box-sizing: border-box;
+      width: 100%;
+      height: 101vh;
+      display: flex;
+      justify-content: flex-start;
+      overflow: hidden;
+      padding: 50px;
+      background: var(--green);
+    }
+    
+    section:nth-child(2) {
+      background: var(--splash);
+    }
+    
+    section:nth-child(3) {
+      background: var(--pink);
+    }
+    
+    section:nth-child(4) {
+      background: var(--yellow);
+    }
+    
+    section span {
+      display: block;
+      transform: translateX(-100px);
+      opacity: 0;
+    }
+    
+    * {
+      font-weight: 700;
+      font-family: "Inter-Bold", "Inter", sans-serif;
+      color: rgba(0, 0, 0, 0.9);
+      font-size: 48px;
+      letter-spacing: -2px;
+    }
+    </style>
